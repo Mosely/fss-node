@@ -17,8 +17,6 @@ jagql.define({
   }),
   attributes: {
     name: jagql.Joi.string(),
-    updatedBy: jagql.Joi.one('users'),
-    roleTableAccesses: jagql.Joi.many('role-table-access'),
-    userRoles: jagql.Joi.many('user-role')
+    updatedBy: jagql.Joi.one('users')
   }
 });

@@ -2,7 +2,7 @@ const jagql = require("@jagql/framework");
 const RelationalDbStore = require("@jagql/store-sequelize");
 
 jagql.define({
-  resource: "citydataextendeds",
+  resource: "cityDataExtendeds",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
     dialectOptions: {
@@ -20,8 +20,8 @@ jagql.define({
     latitude: jagql.Joi.number(),
     longitude: jagql.Joi.number(),
     county: jagql.Joi.string(),
-    city: jagql.Joi.one('c'),
-    stateCode: jagql.Joi.one('state-c'),
+    city: jagql.Joi.one('cs'),
+    stateCode: jagql.Joi.one('stateCs'),
     updatedBy: jagql.Joi.one('users')
   }
 });

@@ -22,8 +22,6 @@ jagql.define({
     hasFamilyWhoIsServiceMemberOrVeteran: jagql.Joi.boolean(),
     isReferredByVeteranResourceCenter: jagql.Joi.boolean(),
     referral: jagql.Joi.string(),
-    updatedBy: jagql.Joi.one('users'),
-    clientEthnicities: jagql.Joi.many('client-ethnicity'),
-    clientLanguages: jagql.Joi.many('client-language')
+    updatedBy: jagql.Joi.one('users')
   }
 });

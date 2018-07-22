@@ -20,9 +20,8 @@ jagql.define({
     street: jagql.Joi.string(),
     zipcode: jagql.Joi.number(),
     zipcodePlusFour: jagql.Joi.number(),
-    cityData: jagql.Joi.one('city-data'),
-    stateData: jagql.Joi.one('state-data'),
-    updatedBy: jagql.Joi.one('users'),
-    counseleeChildren: jagql.Joi.many('counselee-child')
+    cityData: jagql.Joi.one('cityDatas'),
+    stateData: jagql.Joi.one('stateDatas'),
+    updatedBy: jagql.Joi.one('users')
   }
 });

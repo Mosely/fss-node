@@ -2,7 +2,7 @@ const jagql = require("@jagql/framework");
 const RelationalDbStore = require("@jagql/store-sequelize");
 
 jagql.define({
-  resource: "shelterclientidentitypreferences",
+  resource: "shelterClientIdentityPreferences",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
     dialectOptions: {
@@ -17,8 +17,8 @@ jagql.define({
   }),
   attributes: {
   
-    shelterClient: jagql.Joi.one('shelter-client'),
-    identityPreference: jagql.Joi.one('identity-preference'),
+    shelterClient: jagql.Joi.one('shelterClients'),
+    identityPreference: jagql.Joi.one('identityPreferences'),
     updatedBy: jagql.Joi.one('users')
   }
 });

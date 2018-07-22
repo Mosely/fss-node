@@ -2,7 +2,7 @@ const jagql = require("@jagql/framework");
 const RelationalDbStore = require("@jagql/store-sequelize");
 
 jagql.define({
-  resource: "shelterclients",
+  resource: "shelterClients",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
     dialectOptions: {
@@ -25,10 +25,7 @@ jagql.define({
     enterDate: jagql.Joi.date(),
     exitDate: jagql.Joi.date(),
     notes: jagql.Joi.string(),
-    advocateUser: jagql.Joi.one('advocate-user'),
-    updatedBy: jagql.Joi.one('users'),
-    shelterClientAdditionalStaffs: jagql.Joi.many('shelter-client-additional-staff'),
-    shelterClientFundingSources: jagql.Joi.many('shelter-client-funding-source'),
-    shelterClientIdentityPreferences: jagql.Joi.many('shelter-client-identity-preference')
+    advocateUser: jagql.Joi.one('advocateUsers'),
+    updatedBy: jagql.Joi.one('users')
   }
 });

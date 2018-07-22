@@ -20,7 +20,6 @@ jagql.define({
     phoneNumber: jagql.Joi.number(),
     extension: jagql.Joi.number(),
     phoneType: jagql.Joi.string(),
-    updatedBy: jagql.Joi.one('users'),
-    personPhones: jagql.Joi.many('person-phone')
+    updatedBy: jagql.Joi.one('users')
   }
 });

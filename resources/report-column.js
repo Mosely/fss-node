@@ -2,7 +2,7 @@ const jagql = require("@jagql/framework");
 const RelationalDbStore = require("@jagql/store-sequelize");
 
 jagql.define({
-  resource: "reportcolumns",
+  resource: "reportColumns",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
     dialectOptions: {
@@ -21,8 +21,7 @@ jagql.define({
     columnName: jagql.Joi.string(),
     columnOrder: jagql.Joi.number(),
     width: jagql.Joi.number(),
-    report: jagql.Joi.one('report'),
-    updatedBy: jagql.Joi.one('users'),
-    reportCriterias: jagql.Joi.many('report-criteria')
+    report: jagql.Joi.one('reports'),
+    updatedBy: jagql.Joi.one('users')
   }
 });

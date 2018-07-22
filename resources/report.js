@@ -18,7 +18,6 @@ jagql.define({
   attributes: {
     name: jagql.Joi.string(),
     type: jagql.Joi.string(),
-    updatedBy: jagql.Joi.one('users'),
-    reportColumns: jagql.Joi.many('report-column')
+    updatedBy: jagql.Joi.one('users')
   }
 });

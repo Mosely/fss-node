@@ -2,7 +2,7 @@ const jagql = require("@jagql/framework");
 const RelationalDbStore = require("@jagql/store-sequelize");
 
 jagql.define({
-  resource: "counseleedruguses",
+  resource: "counseleeDrugUses",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
     dialectOptions: {
@@ -17,8 +17,8 @@ jagql.define({
   }),
   attributes: {
     ageWhenFirstUsed: jagql.Joi.number(),
-    counselee: jagql.Joi.one('counselee'),
-    drugUse: jagql.Joi.one('drug-use'),
+    counselee: jagql.Joi.one('counselees'),
+    drugUse: jagql.Joi.one('drugUses'),
     updatedBy: jagql.Joi.one('users')
   }
 });

@@ -21,8 +21,6 @@ jagql.define({
     password: jagql.Joi.string(),
     passwordCreatedAt: jagql.Joi.date(),
     isDisabled: jagql.Joi.boolean(),
-    updatedBy: jagql.Joi.one('users'),
-    shelterClientAdditionalStaffs: jagql.Joi.many('shelter-client-additional-staff'),
-    userRoles: jagql.Joi.many('user-role')
+    updatedBy: jagql.Joi.one('users')
   }
 });

@@ -17,8 +17,6 @@ jagql.define({
   }),
   attributes: {
     name: jagql.Joi.string(),
-    updatedBy: jagql.Joi.one('users'),
-    counseleeChildSiblings: jagql.Joi.many('counselee-child-sibling'),
-    persons: jagql.Joi.many('person')
+    updatedBy: jagql.Joi.one('users')
   }
 });

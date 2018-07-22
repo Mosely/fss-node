@@ -2,7 +2,7 @@ const jagql = require("@jagql/framework");
 const RelationalDbStore = require("@jagql/store-sequelize");
 
 jagql.define({
-  resource: "counseleechildsiblings",
+  resource: "counseleeChildSiblings",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
     dialectOptions: {
@@ -21,8 +21,8 @@ jagql.define({
     relationshipDesc: jagql.Joi.string(),
     isDead: jagql.Joi.boolean(),
     ageAtDeath: jagql.Joi.number(),
-    counseleeChild: jagql.Joi.one('counselee-child'),
-    gender: jagql.Joi.one('gender'),
+    counseleeChild: jagql.Joi.one('counseleeChildren'),
+    gender: jagql.Joi.one('genders'),
     updatedBy: jagql.Joi.one('users')
   }
 });

@@ -17,7 +17,6 @@ jagql.define({
   }),
   attributes: {
     name: jagql.Joi.string(),
-    updatedBy: jagql.Joi.one('users'),
-    clientLanguages: jagql.Joi.many('client-language')
+    updatedBy: jagql.Joi.one('users')
   }
 });

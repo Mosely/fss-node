@@ -40,9 +40,6 @@ jagql.define({
     previousCounselingWhen: jagql.Joi.date(),
     currentlyInCounseling: jagql.Joi.boolean(),
     currentCounselor: jagql.Joi.string(),
-    updatedBy: jagql.Joi.one('users'),
-    counseleeCounselingTopics: jagql.Joi.many('counselee-counseling-topic'),
-    counseleeDrugUses: jagql.Joi.many('counselee-drug-use'),
-    counseleeMedications: jagql.Joi.many('counselee-medication')
+    updatedBy: jagql.Joi.one('users')
   }
 });
