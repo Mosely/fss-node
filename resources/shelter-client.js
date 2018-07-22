@@ -25,7 +25,7 @@ jagql.define({
     enterDate: jagql.Joi.date(),
     exitDate: jagql.Joi.date(),
     notes: jagql.Joi.string(),
-    advocateUser: jagql.Joi.one('advocateUsers'),
+    advocateUser: jagql.Joi.one('people'),
     updatedBy: jagql.Joi.one('users')
   }
 });
