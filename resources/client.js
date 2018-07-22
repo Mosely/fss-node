@@ -1,4 +1,7 @@
-server.define({
+const jagql = require('@jagql/framework');
+const RelationalDbStore = require("jsonapi-store-relationaldb");
+
+jsonApi.define({
   resource: "clients",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,14 +16,14 @@ server.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    socialSecurityNumber: server.Joi.number(),
-    placeOfEmployment: server.Joi.string(),
-    isServiceMemberOrVeteran: server.Joi.boolean(),
-    hasFamilyWhoIsServiceMemberOrVeteran: server.Joi.boolean(),
-    isReferredByVeteranResourceCenter: server.Joi.boolean(),
-    referral: server.Joi.string(),
-    updatedBy: server.Joi.one('users'),
-    clientEthnicities: server.Joi.many('client-ethnicity'),
-    clientLanguages: server.Joi.many('client-language')
+    socialSecurityNumber: jagql.Joi.number(),
+    placeOfEmployment: jagql.Joi.string(),
+    isServiceMemberOrVeteran: jagql.Joi.boolean(),
+    hasFamilyWhoIsServiceMemberOrVeteran: jagql.Joi.boolean(),
+    isReferredByVeteranResourceCenter: jagql.Joi.boolean(),
+    referral: jagql.Joi.string(),
+    updatedBy: jagql.Joi.one('users'),
+    clientEthnicities: jagql.Joi.many('client-ethnicity'),
+    clientLanguages: jagql.Joi.many('client-language')
   }
 });

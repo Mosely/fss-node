@@ -1,4 +1,7 @@
-server.define({
+const jagql = require('@jagql/framework');
+const RelationalDbStore = require("jsonapi-store-relationaldb");
+
+jsonApi.define({
   resource: "shelter-clients",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,19 +16,19 @@ server.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    usedFormAssistance: server.Joi.boolean(),
-    assistantName: server.Joi.string(),
-    assistantRelationship: server.Joi.string(),
-    isRural: server.Joi.boolean(),
-    isUrban: server.Joi.boolean(),
-    hasTanfForm: server.Joi.boolean(),
-    enterDate: server.Joi.date(),
-    exitDate: server.Joi.date(),
-    notes: server.Joi.string(),
-    advocateUser: server.Joi.one('advocate-user'),
-    updatedBy: server.Joi.one('users'),
-    shelterClientAdditionalStaffs: server.Joi.many('shelter-client-additional-staff'),
-    shelterClientFundingSources: server.Joi.many('shelter-client-funding-source'),
-    shelterClientIdentityPreferences: server.Joi.many('shelter-client-identity-preference')
+    usedFormAssistance: jagql.Joi.boolean(),
+    assistantName: jagql.Joi.string(),
+    assistantRelationship: jagql.Joi.string(),
+    isRural: jagql.Joi.boolean(),
+    isUrban: jagql.Joi.boolean(),
+    hasTanfForm: jagql.Joi.boolean(),
+    enterDate: jagql.Joi.date(),
+    exitDate: jagql.Joi.date(),
+    notes: jagql.Joi.string(),
+    advocateUser: jagql.Joi.one('advocate-user'),
+    updatedBy: jagql.Joi.one('users'),
+    shelterClientAdditionalStaffs: jagql.Joi.many('shelter-client-additional-staff'),
+    shelterClientFundingSources: jagql.Joi.many('shelter-client-funding-source'),
+    shelterClientIdentityPreferences: jagql.Joi.many('shelter-client-identity-preference')
   }
 });

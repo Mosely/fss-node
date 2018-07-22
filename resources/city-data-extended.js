@@ -1,4 +1,7 @@
-server.define({
+const jagql = require('@jagql/framework');
+const RelationalDbStore = require("jsonapi-store-relationaldb");
+
+jsonApi.define({
   resource: "city-data-extendeds",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,12 +16,12 @@ server.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    zip: server.Joi.number(),
-    latitude: server.Joi.number(),
-    longitude: server.Joi.number(),
-    county: server.Joi.string(),
-    city: server.Joi.one('c'),
-    stateCode: server.Joi.one('state-c'),
-    updatedBy: server.Joi.one('users')
+    zip: jagql.Joi.number(),
+    latitude: jagql.Joi.number(),
+    longitude: jagql.Joi.number(),
+    county: jagql.Joi.string(),
+    city: jagql.Joi.one('c'),
+    stateCode: jagql.Joi.one('state-c'),
+    updatedBy: jagql.Joi.one('users')
   }
 });

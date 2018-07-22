@@ -1,4 +1,7 @@
-server.define({
+const jagql = require('@jagql/framework');
+const RelationalDbStore = require("jsonapi-store-relationaldb");
+
+jsonApi.define({
   resource: "shelter-client-funding-sources",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -14,8 +17,8 @@ server.define({
   }),
   attributes: {
   
-    shelterClient: server.Joi.one('shelter-client'),
-    fundingSource: server.Joi.one('funding-source'),
-    updatedBy: server.Joi.one('users')
+    shelterClient: jagql.Joi.one('shelter-client'),
+    fundingSource: jagql.Joi.one('funding-source'),
+    updatedBy: jagql.Joi.one('users')
   }
 });

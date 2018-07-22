@@ -1,4 +1,7 @@
-server.define({
+const jagql = require('@jagql/framework');
+const RelationalDbStore = require("jsonapi-store-relationaldb");
+
+jsonApi.define({
   resource: "user-roles",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -14,8 +17,8 @@ server.define({
   }),
   attributes: {
   
-    user: server.Joi.one('user'),
-    role: server.Joi.one('role'),
-    updatedBy: server.Joi.one('users')
+    user: jagql.Joi.one('user'),
+    role: jagql.Joi.one('role'),
+    updatedBy: jagql.Joi.one('users')
   }
 });

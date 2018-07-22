@@ -1,4 +1,7 @@
-server.define({
+const jagql = require('@jagql/framework');
+const RelationalDbStore = require("jsonapi-store-relationaldb");
+
+jsonApi.define({
   resource: "veterans",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,16 +16,16 @@ server.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    referredBy: server.Joi.string(),
-    hasDd214: server.Joi.boolean(),
-    isRegisteredWithVa: server.Joi.boolean(),
-    vaId: server.Joi.number(),
-    jobTitle: server.Joi.string(),
-    isOnDisability: server.Joi.boolean(),
-    isHomeless: server.Joi.boolean(),
-    householdIncome: server.Joi.number(),
-    branchOfService: server.Joi.one('branch-of-service'),
-    militaryDischargeType: server.Joi.one('military-discharge-type'),
-    updatedBy: server.Joi.one('users')
+    referredBy: jagql.Joi.string(),
+    hasDd214: jagql.Joi.boolean(),
+    isRegisteredWithVa: jagql.Joi.boolean(),
+    vaId: jagql.Joi.number(),
+    jobTitle: jagql.Joi.string(),
+    isOnDisability: jagql.Joi.boolean(),
+    isHomeless: jagql.Joi.boolean(),
+    householdIncome: jagql.Joi.number(),
+    branchOfService: jagql.Joi.one('branch-of-service'),
+    militaryDischargeType: jagql.Joi.one('military-discharge-type'),
+    updatedBy: jagql.Joi.one('users')
   }
 });

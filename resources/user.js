@@ -1,4 +1,7 @@
-server.define({
+const jagql = require('@jagql/framework');
+const RelationalDbStore = require("jsonapi-store-relationaldb");
+
+jsonApi.define({
   resource: "users",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,13 +16,13 @@ server.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    username: server.Joi.string(),
-    email: server.Joi.string(),
-    password: server.Joi.string(),
-    passwordCreatedAt: server.Joi.date(),
-    isDisabled: server.Joi.boolean(),
-    updatedBy: server.Joi.one('users'),
-    shelterClientAdditionalStaffs: server.Joi.many('shelter-client-additional-staff'),
-    userRoles: server.Joi.many('user-role')
+    username: jagql.Joi.string(),
+    email: jagql.Joi.string(),
+    password: jagql.Joi.string(),
+    passwordCreatedAt: jagql.Joi.date(),
+    isDisabled: jagql.Joi.boolean(),
+    updatedBy: jagql.Joi.one('users'),
+    shelterClientAdditionalStaffs: jagql.Joi.many('shelter-client-additional-staff'),
+    userRoles: jagql.Joi.many('user-role')
   }
 });

@@ -1,4 +1,7 @@
-server.define({
+const jagql = require('@jagql/framework');
+const RelationalDbStore = require("jsonapi-store-relationaldb");
+
+jsonApi.define({
   resource: "reports",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,9 +16,9 @@ server.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    name: server.Joi.string(),
-    type: server.Joi.string(),
-    updatedBy: server.Joi.one('users'),
-    reportColumns: server.Joi.many('report-column')
+    name: jagql.Joi.string(),
+    type: jagql.Joi.string(),
+    updatedBy: jagql.Joi.one('users'),
+    reportColumns: jagql.Joi.many('report-column')
   }
 });
