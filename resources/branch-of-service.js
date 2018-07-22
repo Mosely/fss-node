@@ -1,7 +1,7 @@
 const jagql = require('@jagql/framework');
 const RelationalDbStore = require("jsonapi-store-relationaldb");
 
-jsonApi.define({
+jagql.define({
   resource: "branch-of-services",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,

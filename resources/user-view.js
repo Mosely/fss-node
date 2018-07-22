@@ -1,7 +1,7 @@
 const jagql = require('@jagql/framework');
 const RelationalDbStore = require("jsonapi-store-relationaldb");
 
-jsonApi.define({
+jagql.define({
   resource: "user-views",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -26,6 +26,6 @@ jsonApi.define({
     username: jagql.Joi.string(),
     password: jagql.Joi.string(),
     passwordCreatedAt: jagql.Joi.date(),
-    isDisabled: jagql.Joi.boolean()
+    isDisabled: jagql.Joi.boolean(
   }
 });
