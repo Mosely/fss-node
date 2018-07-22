@@ -17,7 +17,7 @@ jagql.define({
   }),
   attributes: {
     isPrimary: jagql.Joi.boolean(),
-    person: jagql.Joi.one('persons'),
+    person: jagql.Joi.one('people'),
     address: jagql.Joi.one('addresses'),
     updatedBy: jagql.Joi.one('users')
   }
