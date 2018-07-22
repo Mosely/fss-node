@@ -24,7 +24,7 @@ jagql.define({
     isOnDisability: jagql.Joi.boolean(),
     isHomeless: jagql.Joi.boolean(),
     householdIncome: jagql.Joi.number(),
-    branchOfService: jagql.Joi.one('branchOfServices'),
+    branchOfService: jagql.Joi.one('branchesOfService'),
     militaryDischargeType: jagql.Joi.one('militaryDischargeTypes'),
     updatedBy: jagql.Joi.one('users')
   }

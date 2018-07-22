@@ -22,9 +22,9 @@ jagql.define({
     zipcode: jagql.Joi.number(),
     zipcodePlusFour: jagql.Joi.number(),
     apartmentNumber: jagql.Joi.number(),
-    cityData: jagql.Joi.one('cityDatas'),
-    stateData: jagql.Joi.one('stateDatas'),
-    countyData: jagql.Joi.one('countyDatas'),
+    cityData: jagql.Joi.one('cityData'),
+    stateData: jagql.Joi.one('stateData'),
+    countyData: jagql.Joi.one('countyData'),
     updatedBy: jagql.Joi.one('users')
   }
 });
