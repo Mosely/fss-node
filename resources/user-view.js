@@ -1,5 +1,5 @@
-const jagql = require('@jagql/framework');
-const RelationalDbStore = require("jsonapi-store-relationaldb");
+const jagql = require("@jagql/framework");
+const RelationalDbStore = require("@jagql/store-sequelize");
 
 jagql.define({
   resource: "user-views",
@@ -26,6 +26,6 @@ jagql.define({
     username: jagql.Joi.string(),
     password: jagql.Joi.string(),
     passwordCreatedAt: jagql.Joi.date(),
-    isDisabled: jagql.Joi.boolean(
+    isDisabled: jagql.Joi.boolean()
   }
 });

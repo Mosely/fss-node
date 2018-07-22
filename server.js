@@ -7,7 +7,7 @@ const path = require('path');
 const debug = require('debug');
 const dotenv = require('dotenv');
 const jagql = require('@jagql/framework');
-const RelationalDbStore = require("jsonapi-store-relationaldb");
+const RelationalDbStore = require("@jagql/store-sequelize");
 
 // Exposing some modules
 server.start = jagql.start;

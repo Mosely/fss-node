@@ -1,5 +1,5 @@
-const jagql = require('@jagql/framework');
-const RelationalDbStore = require("jsonapi-store-relationaldb");
+const jagql = require("@jagql/framework");
+const RelationalDbStore = require("@jagql/store-sequelize");
 
 jagql.define({
   resource: "client-ethnicitys",
