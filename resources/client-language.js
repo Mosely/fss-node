@@ -1,4 +1,4 @@
-jsonApi.define({
+server.define({
   resource: "client-languages",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,10 +13,10 @@ jsonApi.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    isPrimary: jsonApi.Joi.boolean(),
-    otherNote: jsonApi.Joi.string(),
-    client: jsonApi.Joi.one('client'),
-    language: jsonApi.Joi.one('language'),
-    updatedBy: jsonApi.Joi.one('users')
+    isPrimary: server.Joi.boolean(),
+    otherNote: server.Joi.string(),
+    client: server.Joi.one('client'),
+    language: server.Joi.one('language'),
+    updatedBy: server.Joi.one('users')
   }
 });

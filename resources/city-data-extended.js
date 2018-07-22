@@ -1,4 +1,4 @@
-jsonApi.define({
+server.define({
   resource: "city-data-extendeds",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,12 +13,12 @@ jsonApi.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    zip: jsonApi.Joi.number(),
-    latitude: jsonApi.Joi.number(),
-    longitude: jsonApi.Joi.number(),
-    county: jsonApi.Joi.string(),
-    city: jsonApi.Joi.one('c'),
-    stateCode: jsonApi.Joi.one('state-c'),
-    updatedBy: jsonApi.Joi.one('users')
+    zip: server.Joi.number(),
+    latitude: server.Joi.number(),
+    longitude: server.Joi.number(),
+    county: server.Joi.string(),
+    city: server.Joi.one('c'),
+    stateCode: server.Joi.one('state-c'),
+    updatedBy: server.Joi.one('users')
   }
 });

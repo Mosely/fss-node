@@ -1,4 +1,4 @@
-jsonApi.define({
+server.define({
   resource: "report-columns",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,13 +13,13 @@ jsonApi.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    header: jsonApi.Joi.string(),
-    tableName: jsonApi.Joi.string(),
-    columnName: jsonApi.Joi.string(),
-    columnOrder: jsonApi.Joi.number(),
-    width: jsonApi.Joi.number(),
-    report: jsonApi.Joi.one('report'),
-    updatedBy: jsonApi.Joi.one('users'),
-    reportCriterias: jsonApi.Joi.many('report-criteria')
+    header: server.Joi.string(),
+    tableName: server.Joi.string(),
+    columnName: server.Joi.string(),
+    columnOrder: server.Joi.number(),
+    width: server.Joi.number(),
+    report: server.Joi.one('report'),
+    updatedBy: server.Joi.one('users'),
+    reportCriterias: server.Joi.many('report-criteria')
   }
 });

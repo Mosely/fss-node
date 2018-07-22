@@ -1,4 +1,4 @@
-jsonApi.define({
+server.define({
   resource: "user-views",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,16 +13,16 @@ jsonApi.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    firstName: jsonApi.Joi.string(),
-    lastName: jsonApi.Joi.string(),
-    middleName: jsonApi.Joi.string(),
-    dateOfBirth: jsonApi.Joi.date(),
-    age: jsonApi.Joi.number(),
-    genderId: jsonApi.Joi.number(),
-    gender: jsonApi.Joi.string(),
-    username: jsonApi.Joi.string(),
-    password: jsonApi.Joi.string(),
-    passwordCreatedAt: jsonApi.Joi.date(),
-    isDisabled: jsonApi.Joi.boolean(
+    firstName: server.Joi.string(),
+    lastName: server.Joi.string(),
+    middleName: server.Joi.string(),
+    dateOfBirth: server.Joi.date(),
+    age: server.Joi.number(),
+    genderId: server.Joi.number(),
+    gender: server.Joi.string(),
+    username: server.Joi.string(),
+    password: server.Joi.string(),
+    passwordCreatedAt: server.Joi.date(),
+    isDisabled: server.Joi.boolean()
   }
 });

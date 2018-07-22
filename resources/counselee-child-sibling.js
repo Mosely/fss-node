@@ -1,4 +1,4 @@
-jsonApi.define({
+server.define({
   resource: "counselee-child-siblings",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,13 +13,13 @@ jsonApi.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    type: jsonApi.Joi.string(),
-    age: jsonApi.Joi.number(),
-    relationshipDesc: jsonApi.Joi.string(),
-    isDead: jsonApi.Joi.boolean(),
-    ageAtDeath: jsonApi.Joi.number(),
-    counseleeChild: jsonApi.Joi.one('counselee-child'),
-    gender: jsonApi.Joi.one('gender'),
-    updatedBy: jsonApi.Joi.one('users')
+    type: server.Joi.string(),
+    age: server.Joi.number(),
+    relationshipDesc: server.Joi.string(),
+    isDead: server.Joi.boolean(),
+    ageAtDeath: server.Joi.number(),
+    counseleeChild: server.Joi.one('counselee-child'),
+    gender: server.Joi.one('gender'),
+    updatedBy: server.Joi.one('users')
   }
 });

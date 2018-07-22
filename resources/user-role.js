@@ -1,4 +1,4 @@
-jsonApi.define({
+server.define({
   resource: "user-roles",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -14,8 +14,8 @@ jsonApi.define({
   }),
   attributes: {
   
-    user: jsonApi.Joi.one('user'),
-    role: jsonApi.Joi.one('role'),
-    updatedBy: jsonApi.Joi.one('users')
+    user: server.Joi.one('user'),
+    role: server.Joi.one('role'),
+    updatedBy: server.Joi.one('users')
   }
 });

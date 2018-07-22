@@ -1,4 +1,4 @@
-jsonApi.define({
+server.define({
   resource: "report-criterias",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,10 +13,10 @@ jsonApi.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    relation: jsonApi.Joi.string(),
-    criteriaValue: jsonApi.Joi.string(),
-    isHidden: jsonApi.Joi.boolean(),
-    reportColumn: jsonApi.Joi.one('report-column'),
-    updatedBy: jsonApi.Joi.one('users')
+    relation: server.Joi.string(),
+    criteriaValue: server.Joi.string(),
+    isHidden: server.Joi.boolean(),
+    reportColumn: server.Joi.one('report-column'),
+    updatedBy: server.Joi.one('users')
   }
 });

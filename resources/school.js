@@ -1,4 +1,4 @@
-jsonApi.define({
+server.define({
   resource: "schools",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,13 +13,13 @@ jsonApi.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    name: jsonApi.Joi.string(),
-    street: jsonApi.Joi.string(),
-    zipcode: jsonApi.Joi.number(),
-    zipcodePlusFour: jsonApi.Joi.number(),
-    cityData: jsonApi.Joi.one('city-data'),
-    stateData: jsonApi.Joi.one('state-data'),
-    updatedBy: jsonApi.Joi.one('users'),
-    counseleeChildren: jsonApi.Joi.many('counselee-child')
+    name: server.Joi.string(),
+    street: server.Joi.string(),
+    zipcode: server.Joi.number(),
+    zipcodePlusFour: server.Joi.number(),
+    cityData: server.Joi.one('city-data'),
+    stateData: server.Joi.one('state-data'),
+    updatedBy: server.Joi.one('users'),
+    counseleeChildren: server.Joi.many('counselee-child')
   }
 });

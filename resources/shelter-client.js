@@ -1,4 +1,4 @@
-jsonApi.define({
+server.define({
   resource: "shelter-clients",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,19 +13,19 @@ jsonApi.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    usedFormAssistance: jsonApi.Joi.boolean(),
-    assistantName: jsonApi.Joi.string(),
-    assistantRelationship: jsonApi.Joi.string(),
-    isRural: jsonApi.Joi.boolean(),
-    isUrban: jsonApi.Joi.boolean(),
-    hasTanfForm: jsonApi.Joi.boolean(),
-    enterDate: jsonApi.Joi.date(),
-    exitDate: jsonApi.Joi.date(),
-    notes: jsonApi.Joi.string(),
-    advocateUser: jsonApi.Joi.one('advocate-user'),
-    updatedBy: jsonApi.Joi.one('users'),
-    shelterClientAdditionalStaffs: jsonApi.Joi.many('shelter-client-additional-staff'),
-    shelterClientFundingSources: jsonApi.Joi.many('shelter-client-funding-source'),
-    shelterClientIdentityPreferences: jsonApi.Joi.many('shelter-client-identity-preference')
+    usedFormAssistance: server.Joi.boolean(),
+    assistantName: server.Joi.string(),
+    assistantRelationship: server.Joi.string(),
+    isRural: server.Joi.boolean(),
+    isUrban: server.Joi.boolean(),
+    hasTanfForm: server.Joi.boolean(),
+    enterDate: server.Joi.date(),
+    exitDate: server.Joi.date(),
+    notes: server.Joi.string(),
+    advocateUser: server.Joi.one('advocate-user'),
+    updatedBy: server.Joi.one('users'),
+    shelterClientAdditionalStaffs: server.Joi.many('shelter-client-additional-staff'),
+    shelterClientFundingSources: server.Joi.many('shelter-client-funding-source'),
+    shelterClientIdentityPreferences: server.Joi.many('shelter-client-identity-preference')
   }
 });

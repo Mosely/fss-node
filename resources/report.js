@@ -1,4 +1,4 @@
-jsonApi.define({
+server.define({
   resource: "reports",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,9 +13,9 @@ jsonApi.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    name: jsonApi.Joi.string(),
-    type: jsonApi.Joi.string(),
-    updatedBy: jsonApi.Joi.one('users'),
-    reportColumns: jsonApi.Joi.many('report-column')
+    name: server.Joi.string(),
+    type: server.Joi.string(),
+    updatedBy: server.Joi.one('users'),
+    reportColumns: server.Joi.many('report-column')
   }
 });

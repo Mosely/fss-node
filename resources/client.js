@@ -1,4 +1,4 @@
-jsonApi.define({
+server.define({
   resource: "clients",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,14 +13,14 @@ jsonApi.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    socialSecurityNumber: jsonApi.Joi.number(),
-    placeOfEmployment: jsonApi.Joi.string(),
-    isServiceMemberOrVeteran: jsonApi.Joi.boolean(),
-    hasFamilyWhoIsServiceMemberOrVeteran: jsonApi.Joi.boolean(),
-    isReferredByVeteranResourceCenter: jsonApi.Joi.boolean(),
-    referral: jsonApi.Joi.string(),
-    updatedBy: jsonApi.Joi.one('users'),
-    clientEthnicities: jsonApi.Joi.many('client-ethnicity'),
-    clientLanguages: jsonApi.Joi.many('client-language')
+    socialSecurityNumber: server.Joi.number(),
+    placeOfEmployment: server.Joi.string(),
+    isServiceMemberOrVeteran: server.Joi.boolean(),
+    hasFamilyWhoIsServiceMemberOrVeteran: server.Joi.boolean(),
+    isReferredByVeteranResourceCenter: server.Joi.boolean(),
+    referral: server.Joi.string(),
+    updatedBy: server.Joi.one('users'),
+    clientEthnicities: server.Joi.many('client-ethnicity'),
+    clientLanguages: server.Joi.many('client-language')
   }
 });

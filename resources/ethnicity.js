@@ -1,4 +1,4 @@
-jsonApi.define({
+server.define({
   resource: "ethnicitys",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,8 +13,8 @@ jsonApi.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    name: jsonApi.Joi.string(),
-    updatedBy: jsonApi.Joi.one('users'),
-    clientEthnicities: jsonApi.Joi.many('client-ethnicity')
+    name: server.Joi.string(),
+    updatedBy: server.Joi.one('users'),
+    clientEthnicities: server.Joi.many('client-ethnicity')
   }
 });

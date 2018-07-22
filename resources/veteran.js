@@ -1,4 +1,4 @@
-jsonApi.define({
+server.define({
   resource: "veterans",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,16 +13,16 @@ jsonApi.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    referredBy: jsonApi.Joi.string(),
-    hasDd214: jsonApi.Joi.boolean(),
-    isRegisteredWithVa: jsonApi.Joi.boolean(),
-    vaId: jsonApi.Joi.number(),
-    jobTitle: jsonApi.Joi.string(),
-    isOnDisability: jsonApi.Joi.boolean(),
-    isHomeless: jsonApi.Joi.boolean(),
-    householdIncome: jsonApi.Joi.number(),
-    branchOfService: jsonApi.Joi.one('branch-of-service'),
-    militaryDischargeType: jsonApi.Joi.one('military-discharge-type'),
-    updatedBy: jsonApi.Joi.one('users')
+    referredBy: server.Joi.string(),
+    hasDd214: server.Joi.boolean(),
+    isRegisteredWithVa: server.Joi.boolean(),
+    vaId: server.Joi.number(),
+    jobTitle: server.Joi.string(),
+    isOnDisability: server.Joi.boolean(),
+    isHomeless: server.Joi.boolean(),
+    householdIncome: server.Joi.number(),
+    branchOfService: server.Joi.one('branch-of-service'),
+    militaryDischargeType: server.Joi.one('military-discharge-type'),
+    updatedBy: server.Joi.one('users')
   }
 });

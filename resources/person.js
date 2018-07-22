@@ -1,4 +1,4 @@
-jsonApi.define({
+server.define({
   resource: "people",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,14 +13,14 @@ jsonApi.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    firstName: jsonApi.Joi.string(),
-    lastName: jsonApi.Joi.string(),
-    middleName: jsonApi.Joi.string(),
-    dateOfBirth: jsonApi.Joi.date(),
-    age: jsonApi.Joi.number(),
-    gender: jsonApi.Joi.one('gender'),
-    updatedBy: jsonApi.Joi.one('users'),
-    personAddresses: jsonApi.Joi.many('person-address'),
-    personPhones: jsonApi.Joi.many('person-phone')
+    firstName: server.Joi.string(),
+    lastName: server.Joi.string(),
+    middleName: server.Joi.string(),
+    dateOfBirth: server.Joi.date(),
+    age: server.Joi.number(),
+    gender: server.Joi.one('gender'),
+    updatedBy: server.Joi.one('users'),
+    personAddresses: server.Joi.many('person-address'),
+    personPhones: server.Joi.many('person-phone')
   }
 });

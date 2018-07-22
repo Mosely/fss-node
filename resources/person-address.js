@@ -1,4 +1,4 @@
-jsonApi.define({
+server.define({
   resource: "person-addresses",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,9 +13,9 @@ jsonApi.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    isPrimary: jsonApi.Joi.boolean(),
-    person: jsonApi.Joi.one('person'),
-    address: jsonApi.Joi.one('address'),
-    updatedBy: jsonApi.Joi.one('users')
+    isPrimary: server.Joi.boolean(),
+    person: server.Joi.one('person'),
+    address: server.Joi.one('address'),
+    updatedBy: server.Joi.one('users')
   }
 });

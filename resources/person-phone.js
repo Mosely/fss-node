@@ -1,4 +1,4 @@
-jsonApi.define({
+server.define({
   resource: "person-phones",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,10 +13,10 @@ jsonApi.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    isPrimary: jsonApi.Joi.boolean(),
-    canCall: jsonApi.Joi.boolean(),
-    person: jsonApi.Joi.one('person'),
-    phone: jsonApi.Joi.one('phone'),
-    updatedBy: jsonApi.Joi.one('users')
+    isPrimary: server.Joi.boolean(),
+    canCall: server.Joi.boolean(),
+    person: server.Joi.one('person'),
+    phone: server.Joi.one('phone'),
+    updatedBy: server.Joi.one('users')
   }
 });

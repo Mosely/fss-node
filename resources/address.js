@@ -1,4 +1,4 @@
-jsonApi.define({
+server.define({
   resource: "addresses",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,16 +13,16 @@ jsonApi.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    streetNumber: jsonApi.Joi.number(),
-    streetName: jsonApi.Joi.string(),
-    streetSuffix: jsonApi.Joi.string(),
-    zipcode: jsonApi.Joi.number(),
-    zipcodePlusFour: jsonApi.Joi.number(),
-    apartmentNumber: jsonApi.Joi.number(),
-    cityData: jsonApi.Joi.one('city-data'),
-    stateData: jsonApi.Joi.one('state-data'),
-    countyData: jsonApi.Joi.one('county-data'),
-    updatedBy: jsonApi.Joi.one('users'),
-    personAddresses: jsonApi.Joi.many('person-address')
+    streetNumber: server.Joi.number(),
+    streetName: server.Joi.string(),
+    streetSuffix: server.Joi.string(),
+    zipcode: server.Joi.number(),
+    zipcodePlusFour: server.Joi.number(),
+    apartmentNumber: server.Joi.number(),
+    cityData: server.Joi.one('city-data'),
+    stateData: server.Joi.one('state-data'),
+    countyData: server.Joi.one('county-data'),
+    updatedBy: server.Joi.one('users'),
+    personAddresses: server.Joi.many('person-address')
   }
 });

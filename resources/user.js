@@ -1,4 +1,4 @@
-jsonApi.define({
+server.define({
   resource: "users",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,13 +13,13 @@ jsonApi.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    username: jsonApi.Joi.string(),
-    email: jsonApi.Joi.string(),
-    password: jsonApi.Joi.string(),
-    passwordCreatedAt: jsonApi.Joi.date(),
-    isDisabled: jsonApi.Joi.boolean(),
-    updatedBy: jsonApi.Joi.one('users'),
-    shelterClientAdditionalStaffs: jsonApi.Joi.many('shelter-client-additional-staff'),
-    userRoles: jsonApi.Joi.many('user-role')
+    username: server.Joi.string(),
+    email: server.Joi.string(),
+    password: server.Joi.string(),
+    passwordCreatedAt: server.Joi.date(),
+    isDisabled: server.Joi.boolean(),
+    updatedBy: server.Joi.one('users'),
+    shelterClientAdditionalStaffs: server.Joi.many('shelter-client-additional-staff'),
+    userRoles: server.Joi.many('user-role')
   }
 });

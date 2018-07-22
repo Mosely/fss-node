@@ -1,4 +1,4 @@
-jsonApi.define({
+server.define({
   resource: "military-discharge-types",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,8 +13,8 @@ jsonApi.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    name: jsonApi.Joi.string(),
-    updatedBy: jsonApi.Joi.one('users'),
-    veterans: jsonApi.Joi.many('veteran')
+    name: server.Joi.string(),
+    updatedBy: server.Joi.one('users'),
+    veterans: server.Joi.many('veteran')
   }
 });

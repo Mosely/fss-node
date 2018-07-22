@@ -1,4 +1,4 @@
-jsonApi.define({
+server.define({
   resource: "phones",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,11 +13,11 @@ jsonApi.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    areaCode: jsonApi.Joi.number(),
-    phoneNumber: jsonApi.Joi.number(),
-    extension: jsonApi.Joi.number(),
-    phoneType: jsonApi.Joi.string(),
-    updatedBy: jsonApi.Joi.one('users'),
-    personPhones: jsonApi.Joi.many('person-phone')
+    areaCode: server.Joi.number(),
+    phoneNumber: server.Joi.number(),
+    extension: server.Joi.number(),
+    phoneType: server.Joi.string(),
+    updatedBy: server.Joi.one('users'),
+    personPhones: server.Joi.many('person-phone')
   }
 });

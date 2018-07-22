@@ -1,4 +1,4 @@
-jsonApi.define({
+server.define({
   resource: "state-datas",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -13,10 +13,10 @@ jsonApi.define({
     logging: process.env.DEBUG
   }),
   attributes: {
-    name: jsonApi.Joi.string(),
-    stateCode: jsonApi.Joi.string(),
-    updatedBy: jsonApi.Joi.one('users'),
-    addresses: jsonApi.Joi.many('address'),
-    schools: jsonApi.Joi.many('school')
+    name: server.Joi.string(),
+    stateCode: server.Joi.string(),
+    updatedBy: server.Joi.one('users'),
+    addresses: server.Joi.many('address'),
+    schools: server.Joi.many('school')
   }
 });

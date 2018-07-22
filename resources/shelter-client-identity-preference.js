@@ -1,4 +1,4 @@
-jsonApi.define({
+server.define({
   resource: "shelter-client-identity-preferences",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
@@ -14,8 +14,8 @@ jsonApi.define({
   }),
   attributes: {
   
-    shelterClient: jsonApi.Joi.one('shelter-client'),
-    identityPreference: jsonApi.Joi.one('identity-preference'),
-    updatedBy: jsonApi.Joi.one('users')
+    shelterClient: server.Joi.one('shelter-client'),
+    identityPreference: server.Joi.one('identity-preference'),
+    updatedBy: server.Joi.one('users')
   }
 });
