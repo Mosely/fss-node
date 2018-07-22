@@ -2,7 +2,7 @@ const jagql = require("@jagql/framework");
 const RelationalDbStore = require("@jagql/store-sequelize");
 
 jagql.define({
-  resource: "report-criterias",
+  resource: "reportcriterias",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
     dialectOptions: {

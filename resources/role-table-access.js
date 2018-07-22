@@ -2,7 +2,7 @@ const jagql = require("@jagql/framework");
 const RelationalDbStore = require("@jagql/store-sequelize");
 
 jagql.define({
-  resource: "role-table-accesses",
+  resource: "roletableaccesses",
   handlers: new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
     dialectOptions: {
