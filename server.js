@@ -11,11 +11,16 @@ const cors = require('cors');
 dotenv.config();
 
 //Enabling CORS for everything
-var whitelist = ['http://nginx3.pantheon.local:4202', 'http://node1.pantheon.local:9999/genders'];
+var whitelist = [
+    'http://nginx3.pantheon.local:4202', 
+    'http://node1.pantheon.local:9999'
+];
 //var whitelist = ['*'];
 var corsOptions = {
   origin: function (origin, callback) {
+      // The following line should allow for same-origin bypass
     if (!origin) return callback(null, true);
+
     if (whitelist.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
@@ -77,8 +82,6 @@ jagql.metrics.on('data', data => {
         debug('metrics')(data);
     }
 });
-
-
 
 // Start the JAGQL server at the very end
 jagql.start();
