@@ -63,11 +63,12 @@ fs.readdirSync(path.join(__dirname, '/resources')).filter(
 
 jagql.onUncaughtException((request, error) => {
     const errorDetails = error.stack.split('\n');
-    console.error(JSON.stringify({
+    //console.error(JSON.stringify({
+    console.error({
         request,
         error: errorDetails.shift(),
         stack: errorDetails
-    }));
+    });
 });
 
 // Some debugging
