@@ -12,6 +12,7 @@ dotenv.config();
 
 //Enabling CORS for everything
 var whitelist = [
+    'http://nginx3.pantheon.local', 
     'http://nginx3.pantheon.local:4202', 
     'http://node1.pantheon.local:9999'
 ];
