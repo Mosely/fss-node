@@ -7,18 +7,24 @@ const path = require('path');
 const debug = require('debug');
 const dotenv = require('dotenv');
 const jagql = require('@jagql/framework');
-const RelationalDbStore = require("@jagql/store-sequelize");
-
-// Exposing some modules
-server.start = jagql.start;
-server.close = jagql.close;
-server.getExpressServer = jagql.getExpressServer;
-server.getRelationalDbStore = ((storeConfigObject) => {
-    return new RelationalDbStore(storeConfigObject);
-});
+const cors = require('cors');
 
 // Making sure the .env is loaded
 dotenv.config();
+
+//Enabling CORS for everything
+var whitelist = ['http://nginx3.pantheon.local:4202', 'http://node1.pantheon.local'];
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}
+jagql.getExpressServer().options('*', cors(corsOptions));
+jagql.getExpressServer().use(cors(corsOptions));
 
 // Create configuration for server
 jagql.setConfig({
@@ -69,5 +75,7 @@ jagql.metrics.on('data', data => {
     }
 });
 
+
+
 // Start the JAGQL server at the very end
-server.start();
+jagql.start();
