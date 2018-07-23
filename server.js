@@ -25,7 +25,7 @@ var corsOptions = {
     }
   }
 }
-jagql.getExpressServer().options('*', cors());
+//jagql.getExpressServer().options('*', cors());
 jagql.getExpressServer().use(cors(corsOptions));
 
 // Create configuration for server
