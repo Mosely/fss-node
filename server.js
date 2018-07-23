@@ -1,7 +1,5 @@
 'use strict';
 // Requiring my dependencies
-const server = module.exports = {};
-
 const fs = require('fs');
 const path = require('path');
 const debug = require('debug');
@@ -24,9 +22,10 @@ var corsOptions = {
     }
   }
 }
+var corsMechanism = cors(corsOptions);
 var app = jagql.getExpressServer();
-app.options('*', cors());
-app.use(cors(corsOptions));
+app.options('*', corsMechanism);
+app.use(corsMechanism);
 
 // Create configuration for server
 jagql.setConfig({
