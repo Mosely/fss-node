@@ -22,6 +22,6 @@ jagql.define({
     isCurrentlyLivingWithChild: jagql.Joi.boolean(),
     dateFirstLivedWithChild: jagql.Joi.date(),
     counseleeChild: jagql.Joi.one('counseleeChildren'),
-    updatedBy: jagql.Joi.one('users')
+    updatedBy: jagql.Joi.number().default(1)
   }
 });

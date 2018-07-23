@@ -20,6 +20,6 @@ jagql.define({
     longStandingIllnesses: jagql.Joi.string(),
     whoElseRaisedChild: jagql.Joi.string(),
     school: jagql.Joi.one('schools'),
-    updatedBy: jagql.Joi.one('users')
+    updatedBy: jagql.Joi.number().default(1)
   }
 });

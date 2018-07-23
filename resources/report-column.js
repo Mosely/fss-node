@@ -22,6 +22,6 @@ jagql.define({
     columnOrder: jagql.Joi.number(),
     width: jagql.Joi.number(),
     report: jagql.Joi.one('reports'),
-    updatedBy: jagql.Joi.one('users')
+    updatedBy: jagql.Joi.number().default(1)
   }
 });

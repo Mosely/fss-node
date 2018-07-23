@@ -21,6 +21,6 @@ jagql.define({
     password: jagql.Joi.string(),
     passwordCreatedAt: jagql.Joi.date(),
     isDisabled: jagql.Joi.boolean(),
-    updatedBy: jagql.Joi.one('users')
+    updatedBy: jagql.Joi.number().default(1)
   }
 });

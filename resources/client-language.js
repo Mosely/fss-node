@@ -20,6 +20,6 @@ jagql.define({
     otherNote: jagql.Joi.string(),
     client: jagql.Joi.one('clients'),
     language: jagql.Joi.one('languages'),
-    updatedBy: jagql.Joi.one('users')
+    updatedBy: jagql.Joi.number().default(1)
   }
 });

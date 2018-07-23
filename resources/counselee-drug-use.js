@@ -19,6 +19,6 @@ jagql.define({
     ageWhenFirstUsed: jagql.Joi.number(),
     counselee: jagql.Joi.one('counselees'),
     drugUse: jagql.Joi.one('drugUses'),
-    updatedBy: jagql.Joi.one('users')
+    updatedBy: jagql.Joi.number().default(1)
   }
 });

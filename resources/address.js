@@ -25,6 +25,6 @@ jagql.define({
     cityData: jagql.Joi.one('cityData'),
     stateData: jagql.Joi.one('stateData'),
     countyData: jagql.Joi.one('countyData'),
-    updatedBy: jagql.Joi.one('users')
+    updatedBy: jagql.Joi.number().default(1)
   }
 });

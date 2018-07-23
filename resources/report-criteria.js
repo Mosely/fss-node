@@ -20,6 +20,6 @@ jagql.define({
     criteriaValue: jagql.Joi.string(),
     isHidden: jagql.Joi.boolean(),
     reportColumn: jagql.Joi.one('reportColumns'),
-    updatedBy: jagql.Joi.one('users')
+    updatedBy: jagql.Joi.number().default(1)
   }
 });

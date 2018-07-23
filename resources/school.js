@@ -22,6 +22,6 @@ jagql.define({
     zipcodePlusFour: jagql.Joi.number(),
     cityData: jagql.Joi.one('cityData'),
     stateData: jagql.Joi.one('stateData'),
-    updatedBy: jagql.Joi.one('users')
+    updatedBy: jagql.Joi.number().default(1)
   }
 });

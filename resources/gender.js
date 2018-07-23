@@ -18,6 +18,6 @@ jagql.define({
   attributes: {
     name: jagql.Joi.string(),
     people: jagql.Joi.belongsToMany({resource: "people", as: "gender"}),
-    updatedBy: jagql.Joi.one('users')
+    updatedBy: jagql.Joi.number().default(1)
   }
 });

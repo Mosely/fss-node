@@ -19,6 +19,6 @@ jagql.define({
     reason: jagql.Joi.string(),
     counselee: jagql.Joi.one('counselees'),
     medication: jagql.Joi.one('medications'),
-    updatedBy: jagql.Joi.one('users')
+    updatedBy: jagql.Joi.number().default(1)
   }
 });

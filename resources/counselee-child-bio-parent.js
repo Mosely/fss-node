@@ -26,6 +26,6 @@ jagql.define({
     childAgeWhenBioDied: jagql.Joi.number(),
     causeOfDeath: jagql.Joi.string(),
     counseleeChild: jagql.Joi.one('counseleeChildren'),
-    updatedBy: jagql.Joi.one('users')
+    updatedBy: jagql.Joi.number().default(1)
   }
 });

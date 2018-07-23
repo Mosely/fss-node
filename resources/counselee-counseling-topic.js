@@ -19,6 +19,6 @@ jagql.define({
     otherNote: jagql.Joi.string(),
     counselee: jagql.Joi.one('counselees'),
     counselingTopic: jagql.Joi.one('counselingTopics'),
-    updatedBy: jagql.Joi.one('users')
+    updatedBy: jagql.Joi.number().default(1)
   }
 });

@@ -40,6 +40,6 @@ jagql.define({
     previousCounselingWhen: jagql.Joi.date(),
     currentlyInCounseling: jagql.Joi.boolean(),
     currentCounselor: jagql.Joi.string(),
-    updatedBy: jagql.Joi.one('users')
+    updatedBy: jagql.Joi.number().default(1)
   }
 });

@@ -26,6 +26,6 @@ jagql.define({
     householdIncome: jagql.Joi.number(),
     branchOfService: jagql.Joi.one('branchesOfService'),
     militaryDischargeType: jagql.Joi.one('militaryDischargeTypes'),
-    updatedBy: jagql.Joi.one('users')
+    updatedBy: jagql.Joi.number().default(1)
   }
 });

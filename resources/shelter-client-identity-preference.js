@@ -19,6 +19,6 @@ jagql.define({
   
     shelterClient: jagql.Joi.one('shelterClients'),
     identityPreference: jagql.Joi.one('identityPreferences'),
-    updatedBy: jagql.Joi.one('users')
+    updatedBy: jagql.Joi.number().default(1)
   }
 });

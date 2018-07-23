@@ -17,6 +17,6 @@ jagql.define({
   }),
   attributes: {
     name: jagql.Joi.string(),
-    updatedBy: jagql.Joi.one('users')
+    updatedBy: jagql.Joi.number().default(1)
   }
 });

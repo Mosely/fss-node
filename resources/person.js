@@ -22,6 +22,6 @@ jagql.define({
     dateOfBirth: jagql.Joi.date(),
     age: jagql.Joi.number(),
     gender: jagql.Joi.one('genders'),
-    updatedBy: jagql.Joi.one('users')
+    updatedBy: jagql.Joi.number().default(1)
   }
 });

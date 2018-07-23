@@ -20,6 +20,6 @@ jagql.define({
     canCall: jagql.Joi.boolean(),
     person: jagql.Joi.one('people'),
     phone: jagql.Joi.one('phones'),
-    updatedBy: jagql.Joi.one('users')
+    updatedBy: jagql.Joi.number().default(1)
   }
 });

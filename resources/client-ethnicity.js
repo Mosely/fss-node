@@ -19,6 +19,6 @@ jagql.define({
   
     client: jagql.Joi.one('clients'),
     ethnicity: jagql.Joi.one('ethnicities'),
-    updatedBy: jagql.Joi.one('users')
+    updatedBy: jagql.Joi.number().default(1)
   }
 });

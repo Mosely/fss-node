@@ -23,6 +23,6 @@ jagql.define({
     ageAtDeath: jagql.Joi.number(),
     counseleeChild: jagql.Joi.one('counseleeChildren'),
     gender: jagql.Joi.one('genders'),
-    updatedBy: jagql.Joi.one('users')
+    updatedBy: jagql.Joi.number().default(1)
   }
 });
