@@ -13,7 +13,7 @@ jagql.define({
     database: process.env.DB_DATABASE,
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
-    logging: process.env.DEBUG
+    logging: console.log
   }),
   attributes: {
     areaCode: jagql.Joi.number(),
