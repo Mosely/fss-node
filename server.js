@@ -15,7 +15,6 @@ dotenv.config();
 //Enabling CORS for everything
 //var whitelist = ['http://nginx3.pantheon.local:4202', 'http://node1.pantheon.local:9999'];
 var whitelist = ['*'];
-
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -25,8 +24,9 @@ var corsOptions = {
     }
   }
 }
-//jagql.getExpressServer().options('*', cors());
-//jagql.getExpressServer().use(cors(corsOptions));
+var app = jagql.getExpressServer();
+app.options('*', cors());
+app.use(cors(corsOptions));
 
 // Create configuration for server
 jagql.setConfig({
