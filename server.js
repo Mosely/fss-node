@@ -15,7 +15,7 @@ var whitelist = ['http://nginx3.pantheon.local:4202', 'http://node1.pantheon.loc
 //var whitelist = ['*'];
 var corsOptions = {
   origin: function (origin, callback) {
-      console.log("origin = " + origin);
+    if (!origin) return callback(null, true);
     if (whitelist.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
