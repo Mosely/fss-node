@@ -17,6 +17,7 @@ let theTable = new RelationalDbStore({
 jagql.define({
   resource: "genders",
   handlers: theTable,
+  primaryKey: "autoincrement",
   attributes: {
     name: jagql.Joi.string(),
     people: jagql.Joi.belongsToMany({resource: "people", as: "gender"}),
@@ -24,6 +25,6 @@ jagql.define({
   }
 });
 
-theTable.populate({force: true}, () => {
+theTable.populate({force: false}, () => {
   //tables dropped and created
 });
