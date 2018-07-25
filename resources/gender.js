@@ -14,7 +14,7 @@ jagql.define({
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     logging: console.log
-  }),
+  }).populate(),
   attributes: {
     name: jagql.Joi.string(),
     people: jagql.Joi.belongsToMany({resource: "people", as: "gender"}),
