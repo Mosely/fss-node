@@ -64,7 +64,7 @@ jagql.authenticate((request, callback) => {
 
 const RelationalDbStore = require("@jagql/store-sequelize");
 
-let sql = new RelationalDbStore({
+let sqlConfig = new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
     dialectOptions: {
         supportBigNumbers: true
@@ -81,7 +81,7 @@ let sql = new RelationalDbStore({
 fs.readdirSync(path.join(__dirname, '/resources')).filter(
     filename => /^[a-z].*\.js$/.test(filename)).map(
         filename => path.join(__dirname, '/resources/', filename)).forEach((resourcePath) => {
-            require(resourcePath)(jagql, sql);
+            require(resourcePath)(jagql, sqlConfig);
         });
 
 jagql.onUncaughtException((request, error) => {
