@@ -4,6 +4,7 @@ module.exports = function (jagql, sqlConfig) {
   jagql.define({
     resource: "languages",
     handlers: sql,
+    primaryKey: "autoincrement",
     attributes: {
       name: jagql.Joi.string(),
       updatedBy: jagql.Joi.number().default(1),
