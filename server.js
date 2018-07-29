@@ -80,7 +80,9 @@ let sql = new RelationalDbStore({
 // Reading all resources
 fs.readdirSync(path.join(__dirname, '/resources')).filter(
     filename => /^[a-z].*\.js$/.test(filename)).map(
-        filename => path.join(__dirname, '/resources/', filename)).forEach(require(jagql, sql));
+        filename => path.join(__dirname, '/resources/', filename)).forEach((resourcePath) => {
+            require(resourcePath)(jagql, sql);
+        });
 
 jagql.onUncaughtException((request, error) => {
     const errorDetails = error.stack.split('\n');
