@@ -84,10 +84,6 @@ fs.readdirSync(path.join(__dirname, '/resources')).filter(
             require(resourcePath)(jagql, sql);
         });
 
-sql.populate({ force: false }, () => {
-    //tables dropped and created
-});
-
 jagql.onUncaughtException((request, error) => {
     const errorDetails = error.stack.split('\n');
     //console.error(JSON.stringify({

@@ -14,4 +14,7 @@ module.exports = function (jagql, sql) {
       client: jagql.Joi.one("clients")
     }
   });
+  sql.populate({ force: false }, () => {
+    //tables dropped and created
+});
 };

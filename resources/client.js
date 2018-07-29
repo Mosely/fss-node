@@ -15,4 +15,7 @@ module.exports = function(jagql, sql) {
       people: jagql.Joi.belongsToOne({resource:'people', as: "client"})
     }
   });
+  sql.populate({ force: false }, () => {
+    //tables dropped and created
+});
 };
