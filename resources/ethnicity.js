@@ -11,7 +11,4 @@ module.exports = function(jagql, sql) {
       })
     }
   });
-  sql.populate({ force: false }, () => {
-    //tables dropped and created
-  });
 };

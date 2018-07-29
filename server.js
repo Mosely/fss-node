@@ -12,22 +12,22 @@ dotenv.config();
 
 //Enabling CORS for everything
 var whitelist = [
-    'http://nginx3.pantheon.local', 
-    'http://nginx3.pantheon.local:4202', 
+    'http://nginx3.pantheon.local',
+    'http://nginx3.pantheon.local:4202',
     'http://node1.pantheon.local:9999'
 ];
 //var whitelist = ['*'];
 var corsOptions = {
-  origin: function (origin, callback) {
-      // The following line should allow for same-origin bypass
-    if (!origin) return callback(null, true);
+    origin: function (origin, callback) {
+        // The following line should allow for same-origin bypass
+        if (!origin) return callback(null, true);
 
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
+        if (whitelist.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
     }
-  }
 }
 var corsMechanism = cors(corsOptions);
 var app = jagql.getExpressServer();
@@ -67,7 +67,7 @@ const RelationalDbStore = require("@jagql/store-sequelize");
 let sql = new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
     dialectOptions: {
-      supportBigNumbers: true
+        supportBigNumbers: true
     },
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
@@ -75,7 +75,7 @@ let sql = new RelationalDbStore({
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     logging: console.log
-  });
+});
 
 // Reading all resources
 fs.readdirSync(path.join(__dirname, '/resources')).filter(
@@ -83,6 +83,10 @@ fs.readdirSync(path.join(__dirname, '/resources')).filter(
         filename => path.join(__dirname, '/resources/', filename)).forEach((resourcePath) => {
             require(resourcePath)(jagql, sql);
         });
+
+sql.populate({ force: false }, () => {
+    //tables dropped and created
+});
 
 jagql.onUncaughtException((request, error) => {
     const errorDetails = error.stack.split('\n');

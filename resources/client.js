@@ -14,7 +14,4 @@ module.exports = function(jagql, sql) {
       languages: jagql.Joi.many("languages")
     }
   });
-  sql.populate({ force: false }, () => {
-    //tables dropped and created
-  });
 };
