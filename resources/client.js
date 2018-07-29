@@ -11,7 +11,8 @@ module.exports = function(jagql, sql) {
       referral: jagql.Joi.string(),
       updatedBy: jagql.Joi.number().default(1),
       ethnicities: jagql.Joi.many("ethnicities"),
-      languages: jagql.Joi.many("languages")
+      languages: jagql.Joi.many("languages"),
+      person: jagql.Joi.belongsToOne('people')
     }
   });
 };
