@@ -1,4 +1,4 @@
-module.exports = ((jagql, sql) => {
+module.exports = function(jagql, sql) {
   jagql.define({
     resource: "ethnicities",
     handlers: sql,
@@ -14,4 +14,4 @@ module.exports = ((jagql, sql) => {
   sql.populate({ force: false }, () => {
     //tables dropped and created
   });
-});
+};
