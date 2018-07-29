@@ -10,7 +10,8 @@ module.exports = function(jagql, sql) {
       isReferredByVeteranResourceCenter: jagql.Joi.boolean(),
       referral: jagql.Joi.string(),
       updatedBy: jagql.Joi.number().default(1),
-      ethnicities: jagql.Joi.many("ethnicities")
+      ethnicities: jagql.Joi.many("ethnicities"),
+      languages: jagql.Joi.many("languages")
     }
   });
   sql.populate({ force: false }, () => {
