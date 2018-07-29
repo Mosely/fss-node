@@ -62,10 +62,25 @@ jagql.authenticate((request, callback) => {
     return callback();
 });
 
+const RelationalDbStore = require("@jagql/store-sequelize");
+
+let sql = new RelationalDbStore({
+    dialect: process.env.DB_DRIVER,
+    dialectOptions: {
+      supportBigNumbers: true
+    },
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    database: process.env.DB_DATABASE,
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    logging: console.log
+  });
+
 // Reading all resources
 fs.readdirSync(path.join(__dirname, '/resources')).filter(
     filename => /^[a-z].*\.js$/.test(filename)).map(
-        filename => path.join(__dirname, '/resources/', filename)).forEach(require);
+        filename => path.join(__dirname, '/resources/', filename)).forEach(require(jagql, sql));
 
 jagql.onUncaughtException((request, error) => {
     const errorDetails = error.stack.split('\n');
