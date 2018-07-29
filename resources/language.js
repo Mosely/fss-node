@@ -7,7 +7,7 @@ module.exports = function (jagql, sql) {
       updatedBy: jagql.Joi.number().default(1),
       clients: jagql.Joi.belongsToMany({
         resource: 'clients',
-        as: 'language'
+        as: 'languages'
       })
     }
   });
