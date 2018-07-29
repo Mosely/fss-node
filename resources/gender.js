@@ -8,8 +8,4 @@ module.exports = function (jagql, sql) {
       updatedBy: jagql.Joi.number().default(1)
     }
   });
-
-  theTable.populate({ force: false }, () => {
-    //tables dropped and created
-  });
 };
