@@ -8,7 +8,7 @@ module.exports = function (jagql, sqlConfig) {
     attributes: {
       firstName: jagql.Joi.string(),
       lastName: jagql.Joi.string(),
-      middleName: jagql.Joi.string(),
+      middleName: jagql.Joi.string().allow(null),
       dateOfBirth: jagql.Joi.date(),
       age: jagql.Joi.number(),
       gender: jagql.Joi.one('genders'),
