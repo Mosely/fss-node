@@ -64,7 +64,7 @@ jagql.authenticate((request, callback) => {
 
 const RelationalDbStore = require("@jagql/store-sequelize");
 
-let sqlConfig = new RelationalDbStore({
+var sqlConfig = new RelationalDbStore({
     dialect: process.env.DB_DRIVER,
     dialectOptions: {
         supportBigNumbers: true
