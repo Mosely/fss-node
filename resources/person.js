@@ -10,7 +10,8 @@ module.exports = function (jagql, sql) {
       dateOfBirth: jagql.Joi.date(),
       age: jagql.Joi.number(),
       gender: jagql.Joi.one('genders'),
-      updatedBy: jagql.Joi.number().default(1)
+      updatedBy: jagql.Joi.number().default(1),
+      client: jagql.Joi.one("clients")
     }
   });
 };
