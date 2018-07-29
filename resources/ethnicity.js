@@ -18,7 +18,7 @@ jagql.define({
   attributes: {
     name: jagql.Joi.string(),
     updatedBy: jagql.Joi.number().default(1),
-    clients: jagql.joi.belongsToMany({resource:"clients", as:"ethnicity"})
+    clients: jagql.Joi.belongsToMany({resource:"clients", as:"ethnicity"})
   }
 });
 sql.populate({force: false}, () => {
