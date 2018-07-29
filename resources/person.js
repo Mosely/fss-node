@@ -1,4 +1,5 @@
 module.exports = function (jagql, sql) {
+  sql = require("@jagql/store-sequelize");
   jagql.define({
     resource: "people",
     handlers: sql,
