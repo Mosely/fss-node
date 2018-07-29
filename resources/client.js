@@ -23,7 +23,7 @@ jagql.define({
     isReferredByVeteranResourceCenter: jagql.Joi.boolean(),
     referral: jagql.Joi.string(),
     updatedBy: jagql.Joi.number().default(1),
-    ethnicities: jagql.joi.Many("ethnicities")
+    ethnicities: jagql.joi.many("ethnicities")
   }
 });
 sql.populate({force: false}, () => {
