@@ -20,7 +20,7 @@ jagql.define({
   primaryKey: "autoincrement",
   attributes: {
     name: jagql.Joi.string(),
-    people: jagql.Joi.belongsToMany({resource: "people", as: "gender"}),
+    people: jagql.Joi.belongsToMany("people"),
     updatedBy: jagql.Joi.number().default(1)
   }
 });
