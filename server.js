@@ -1,56 +1,49 @@
 'use strict';
-// Requiring my dependencies
-const fs = require('fs');
-const path = require('path');
-const debug = require('debug');
 const dotenv = require('dotenv');
-const jagql = require('@jagql/framework');
-const cors = require('cors');
-
 // Making sure the .env is loaded
 dotenv.config();
 
-//Enabling CORS for everything
-var whitelist = [
-    'http://nginx3.pantheon.local',
-    'http://nginx3.pantheon.local:4202',
-    'http://node1.pantheon.local:9999'
-];
-//var whitelist = ['*'];
-var corsOptions = {
-    origin: function (origin, callback) {
-        // The following line should allow for same-origin bypass
-        if (!origin) return callback(null, true);
+// Requiring my other dependencies
+const fs = require('fs');
+const path = require('path');
+const debug = require('debug');
+const jagql = require('@jagql/framework');
+const cors = require('cors');
+const oauthserver = require('express-oauth-server');
+const memorystore = require('./oauth2/authModel.js');
 
-        if (whitelist.indexOf(origin) !== -1) {
-            callback(null, true);
+// This is a library used to help parse the body of the api requests.
+const bodyParser = require('body-parser');
+const settings = require("./settings.js")({ model: memorystore });
+
+var app = jagql.getExpressServer();
+
+// set the bodyParser to parse the urlencoded post data
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Enabling CORS for everything
+var corsMechanism = cors(settings.corsOptions);
+//app.options('*', corsMechanism);
+//app.use(corsMechanism);
+
+app.oauth = new oauthserver(settings.oauth2ServerOptions);
+
+app.all('/token', app.oauth.token());
+
+function selectivelyApply(fn) {
+    return (req, res, next) => {
+        if (req.path === '/swagger.json' ||
+            req.path === '/favicon.ico' ||
+            req.path === '/') {
+            next();
         } else {
-            callback(new Error('Not allowed by CORS'));
+            fn(req, res, next);
         }
     }
 }
-var corsMechanism = cors(corsOptions);
-var app = jagql.getExpressServer();
-app.options('*', corsMechanism);
-app.use(corsMechanism);
+app.all('*', selectivelyApply(app.oauth.authenticate()));
 
-// Create configuration for server
-jagql.setConfig({
-    port: process.env.PORT,
-    graphiql: process.env.ENABLE_GRAPHQL,
-    swagger: {
-        title: 'FSS-Node',
-        version: '1.0.0',
-        description: 'NodeJS variant of the FSS Backend.',
-        license: {
-            name: 'MIT',
-            url: 'http://opensource.org/licenses/MIT'
-        }
-    },
-    protocol: process.env.HTTP_PROTOCOL,
-    hostname: process.env.HOST,
-    base: '',
-});
+jagql.setConfig(settings.jagqlOptions);
 
 jagql.authenticate((request, callback) => {
     // If a "blockMe" header is provided, block access.
@@ -62,18 +55,7 @@ jagql.authenticate((request, callback) => {
     return callback();
 });
 
-var sqlConfig = {
-    dialect: process.env.DB_DRIVER,
-    dialectOptions: {
-        supportBigNumbers: true
-    },
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    database: process.env.DB_DATABASE,
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
-    logging: console.log
-};
+var sqlConfig = settings.jagqlHandlerOptions;
 
 // Reading all resources
 fs.readdirSync(path.join(__dirname, '/resources')).filter(
@@ -90,6 +72,7 @@ jagql.onUncaughtException((request, error) => {
         error: errorDetails.shift(),
         stack: errorDetails
     });
+    //console.error({request, error: error});
 });
 
 // Some debugging
