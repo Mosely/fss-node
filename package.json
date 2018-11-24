@@ -25,14 +25,14 @@
   },
   "homepage": "https://github.com/Mosely/fss-node#readme",
   "dependencies": {
-    "@jagql/framework": "^5.6.11",
-    "@jagql/store-sequelize": "^5.6.7",
-    "bcrypt": "^3.0.0",
-    "cors": "^2.8.4",
-    "dotenv": "^6.0.0",
+    "@jagql/framework": "^5.6.14",
+    "@jagql/store-sequelize": "^5.6.11",
+    "bcrypt": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^6.1.0",
     "express-oauth-server": "^2.0.0",
-    "jsonwebtoken": "^8.3.0",
-    "mysql2": "^1.5.3",
-    "oauth2-server": "^3.0.0"
+    "jsonwebtoken": "^8.4.0",
+    "mysql2": "^1.6.4",
+    "oauth2-server": "^3.0.1"
   }
 }
