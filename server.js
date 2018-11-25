@@ -23,8 +23,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Enabling CORS for everything
 var corsMechanism = cors(settings.corsOptions);
-//app.options('*', corsMechanism);
-//app.use(corsMechanism);
+app.options('*', corsMechanism);
+app.use(corsMechanism);
 
 app.oauth = new oauthserver(settings.oauth2ServerOptions);
 
