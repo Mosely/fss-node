@@ -7,7 +7,7 @@ module.exports = function (jagql, handlerConfig) {
     handlers: mainHandler,
     primaryKey: 'autoincrement',
     searchParams: {
-      relation: jagql.Joi.string.valid(['MOTHER', 'FATHER']),
+      relation: jagql.Joi.string().valid(['MOTHER', 'FATHER']),
       name: jagql.Joi.string(),
       age: jagql.Joi.number(),
       occupation: jagql.Joi.string().default('Unemployed'),
@@ -18,7 +18,7 @@ module.exports = function (jagql, handlerConfig) {
       updated_by: jagql.Joi.number()
     },
     attributes: {
-      relation: jagql.Joi.string.valid(['MOTHER', 'FATHER']),
+      relation: jagql.Joi.string().valid(['MOTHER', 'FATHER']),
       name: jagql.Joi.string(),
       age: jagql.Joi.number(),
       occupation: jagql.Joi.string().default('Unemployed'),
