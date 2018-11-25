@@ -33,11 +33,20 @@ module.exports = function (neededDependencies) {
                 license: {
                     name: 'MIT',
                     url: 'http://opensource.org/licenses/MIT'
+                },
+                securityDefinitions: {
+                    type: 'oauth2',
+                    flow: 'password',
+                    tokenUrl: process.env.HTTP_PROTOCOL+'://'+process.env.HOST+'/apiv1/token',
+                    scope: ['read', 'write']
+                },
+                security: {
+                    oauth2: ['read', 'write']
                 }
             },
             protocol: process.env.HTTP_PROTOCOL,
             hostname: process.env.HOST,
-            base: '',
+            base: 'apiv1',
         },
         jagqlHandlerOptions: {
             dialect: process.env.DB_DRIVER,
