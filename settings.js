@@ -37,7 +37,7 @@ module.exports = function (neededDependencies) {
                 fss_auth: {
                     type: 'oauth2',
                     flow: 'password',
-                    tokenUrl: process.env.HTTP_PROTOCOL+'://'+process.env.HOST+'/apiv1/token',
+                    tokenUrl: process.env.HTTP_PROTOCOL+'://'+process.env.HOST+':'+process.env.PORT+'/token',
                     scopes: {
                         read: 'Read only.', 
                         write: 'Read and write'
@@ -49,7 +49,8 @@ module.exports = function (neededDependencies) {
             },
             protocol: process.env.HTTP_PROTOCOL,
             hostname: process.env.HOST,
-            base: 'apiv1'
+            base: ''
+            //base: 'apiv1'
         },
         jagqlHandlerOptions: {
             dialect: process.env.DB_DRIVER,
