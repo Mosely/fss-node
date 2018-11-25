@@ -34,13 +34,17 @@ module.exports = function (neededDependencies) {
                     name: 'MIT',
                     url: 'http://opensource.org/licenses/MIT'
                 },
-                fss_auth: {
-                    type: 'oauth2',
-                    flow: 'password',
-                    tokenUrl: process.env.HTTP_PROTOCOL+'://'+process.env.HOST+':'+process.env.PORT+'/token',
-                    scopes: {
-                        read: 'Read only.', 
-                        write: 'Read and write'
+                securityDefinitions: {
+                    fss_auth: {
+                        type: 'oauth2',
+                        flow: 'password',
+                        tokenUrl: process.env.HTTP_PROTOCOL + '://' + process.env.HOST + ':' + process.env.PORT + '/token',
+                        scopes: { 
+                            // NOTE: this is probably going to be a list of every table: 
+                            // if table is listed, then user has write permission; if not, then no access at all.
+                            read: 'Read only.',
+                            write: 'Read and write'
+                        }
                     }
                 },
                 security: {
