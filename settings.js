@@ -1,6 +1,7 @@
 module.exports = function (neededDependencies) {
     let corsWhitelist = [
         'http://nginx3.pantheon.local',
+        'http://nginx3.pantheon.local:3002',
         'http://nginx3.pantheon.local:4202',
         'http://node1.pantheon.local:9999'
     ];
