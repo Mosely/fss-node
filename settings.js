@@ -48,9 +48,9 @@ module.exports = function (neededDependencies) {
                         }
                     }
                 },
-                security: {
+                security: [{
                     fss_auth: ['read', 'write']
-                }
+                }]
             },
             protocol: process.env.HTTP_PROTOCOL,
             hostname: process.env.HOST,
