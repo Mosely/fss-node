@@ -20,10 +20,10 @@ module.exports = function (jagql, handlerConfig) {
       username: jagql.Joi.string(),
       email: jagql.Joi.string(),
       password: jagql.Joi.string(),
-      password_created_at: jagql.Joi.date().timestamp('unix').default(Math.round(Date.now() / 1000)),
+      password_created_at: jagql.Joi.date().default(Math.round(Date.now() / 1000)).timestamp('unix'),
       is_disabled: jagql.Joi.boolean(),
-      created_at: jagql.Joi.date().timestamp('unix').default(Math.round(Date.now() / 1000)),
-      updated_at: jagql.Joi.date().timestamp('unix').default(Math.round(Date.now() / 1000)),
+      created_at: jagql.Joi.date().default(Math.round(Date.now() / 1000)).timestamp('unix'),
+      updated_at: jagql.Joi.date().default(Math.round(Date.now() / 1000)).timestamp('unix'),
       updated_by: jagql.Joi.number().default(1),
       roles: jagql.Joi.many('roles'),
     }
