@@ -24,9 +24,9 @@ module.exports = function (jagql, handlerConfig) {
       updated_at: jagql.Joi.date().timestamp('unix').default(Math.round(Date.now() / 1000)),
       updated_by: jagql.Joi.number().default(1),
       school: jagql.Joi.one('schools'),
-      siblings: jagql.Joi.many('counselee_child_siblings'),
-      guardians: jagql.Joi.many('counselee_child_guardians'),
-      bio_parents: jagql.Joi.many('counselee_child_bio_parents')
+      siblings: jagql.Joi.many('siblings'),
+      guardians: jagql.Joi.many('guardians'),
+      bio_parents: jagql.Joi.many('bio_parents')
       
     }
   });

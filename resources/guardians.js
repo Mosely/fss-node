@@ -3,23 +3,30 @@ module.exports = function (jagql, handlerConfig) {
   let Handler = require('@jagql/store-sequelize');
   let mainHandler = new Handler(handlerConfig);
   jagql.define({
-    resource: 'role_table_accesses',
+    resource: 'guardians',
     handlers: mainHandler,
     primaryKey: 'autoincrement',
     searchParams: {
-      //role_id: jagql.Joi.number(),
-      table_name: jagql.Joi.string(),
+      name: jagql.Joi.string(),
+      age: jagql.Joi.number(),
+      occupation: jagql.Joi.string().default('Unemployed'),
+      is_currently_living_with_child: jagql.Joi.boolean(),
+      date_first_lived_with_child: jagql.Joi.date().timestamp('unix'),
       created_at: jagql.Joi.date().timestamp('unix'),
       updated_at: jagql.Joi.date().timestamp('unix'),
       updated_by: jagql.Joi.number()
     },
     attributes: {
-      //role_id: jagql.Joi.number(),
-      table_name: jagql.Joi.string(),
+      name: jagql.Joi.string(),
+      age: jagql.Joi.number(),
+      occupation: jagql.Joi.string().default('Unemployed'),
+      is_currently_living_with_child: jagql.Joi.boolean(),
+      date_first_lived_with_child: jagql.Joi.date().timestamp('unix'),
       created_at: jagql.Joi.date().timestamp('unix').default(Math.round(Date.now() / 1000)),
       updated_at: jagql.Joi.date().timestamp('unix').default(Math.round(Date.now() / 1000)),
       updated_by: jagql.Joi.number().default(1),
-      role: jagql.Joi.one('roles')
+      counselee_child: jagql.Joi.belongsToOne({ resource: 'counselee_children', as: 'guardians' }),
+      gender: jagql.Joi.one('genders')
       
     }
   });
