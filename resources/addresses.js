@@ -36,11 +36,10 @@ module.exports = function (jagql, handlerConfig) {
       city_data: jagql.Joi.one('city_data'),
       state_data: jagql.Joi.one('state_data'),
       county_data: jagql.Joi.one('county_data'),
-      people: jagql.Joi.belongsToMany('people')
+      people: jagql.Joi.belongsToMany({ resource: 'people', as: 'address' })
     }
   });
   mainHandler.populate({ force: process.env.FORCE_TABLE_GEN }, () => {
     //tables dropped and created
   });
 };
-        

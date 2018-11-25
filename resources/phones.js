@@ -23,7 +23,7 @@ module.exports = function (jagql, handlerConfig) {
       created_at: jagql.Joi.date().timestamp('unix').default(Math.round(Date.now() / 1000)),
       updated_at: jagql.Joi.date().timestamp('unix').default(Math.round(Date.now() / 1000)),
       updated_by: jagql.Joi.number().default(1),
-      person: jagql.Joi.belongsToOne('people')
+      person: jagql.Joi.belongsToOne({ resource: 'people', as: 'phone' })
       
     }
   });

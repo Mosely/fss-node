@@ -29,7 +29,7 @@ module.exports = function (jagql, handlerConfig) {
       created_at: jagql.Joi.date().timestamp('unix').default(Math.round(Date.now() / 1000)),
       updated_at: jagql.Joi.date().timestamp('unix').default(Math.round(Date.now() / 1000)),
       updated_by: jagql.Joi.number().default(1),
-      counselee_child: jagql.Joi.belongsToOne('counselee_children'),
+      counselee_child: jagql.Joi.belongsToOne({ resource: 'counselee_children', as: 'siblings' }),
       gender: jagql.Joi.one('genders')
       
     }

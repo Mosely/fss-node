@@ -17,7 +17,7 @@ module.exports = function (jagql, handlerConfig) {
       created_at: jagql.Joi.date().timestamp('unix').default(Math.round(Date.now() / 1000)),
       updated_at: jagql.Joi.date().timestamp('unix').default(Math.round(Date.now() / 1000)),
       updated_by: jagql.Joi.number().default(1),
-      counselees: jagql.Joi.belongsToMany('counselees')
+      counselees: jagql.Joi.belongsToMany({ resource: 'counselees', as: 'medications' })
       
     }
   });
