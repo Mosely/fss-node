@@ -26,7 +26,6 @@ module.exports = function (jagql, handlerConfig) {
       updated_at: jagql.Joi.date().timestamp('unix').default(Math.round(Date.now() / 1000)),
       updated_by: jagql.Joi.number().default(1),
       roles: jagql.Joi.many('roles'),
-      shelter_clients: jagql.Joi.belongsToMany({ resource: 'shelter_clients', as: 'additional_staff' })
     }
   });
   mainHandler.populate({ force: process.env.FORCE_TABLE_GEN }, () => {
