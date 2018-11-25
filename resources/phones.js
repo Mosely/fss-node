@@ -3,21 +3,27 @@ module.exports = function (jagql, handlerConfig) {
   let Handler = require('@jagql/store-sequelize');
   let mainHandler = new Handler(handlerConfig);
   jagql.define({
-    resource: 'ethnicities',
+    resource: 'phones',
     handlers: mainHandler,
     primaryKey: 'autoincrement',
     searchParams: {
-      name: jagql.Joi.string(),
+      area_code: jagql.Joi.number(),
+      phone_number: jagql.Joi.number(),
+      extension: jagql.Joi.number(),
+      phone_type: jagql.Joi.string(),
       created_at: jagql.Joi.date().timestamp('unix'),
       updated_at: jagql.Joi.date().timestamp('unix'),
       updated_by: jagql.Joi.number()
     },
     attributes: {
-      name: jagql.Joi.string(),
+      area_code: jagql.Joi.number(),
+      phone_number: jagql.Joi.number(),
+      extension: jagql.Joi.number().allow(null),
+      phone_type: jagql.Joi.string(),
       created_at: jagql.Joi.date().timestamp('unix').default(Math.round(Date.now() / 1000)),
       updated_at: jagql.Joi.date().timestamp('unix').default(Math.round(Date.now() / 1000)),
       updated_by: jagql.Joi.number().default(1),
-      clients: jagql.Joi.belongsToMany('clients')
+      person: jagql.Joi.belongsToOne('people')
       
     }
   });

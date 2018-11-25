@@ -3,21 +3,23 @@ module.exports = function (jagql, handlerConfig) {
   let Handler = require('@jagql/store-sequelize');
   let mainHandler = new Handler(handlerConfig);
   jagql.define({
-    resource: 'ethnicities',
+    resource: 'role_table_accesses',
     handlers: mainHandler,
     primaryKey: 'autoincrement',
     searchParams: {
-      name: jagql.Joi.string(),
+      //role_id: jagql.Joi.number(),
+      table_name: jagql.Joi.string(),
       created_at: jagql.Joi.date().timestamp('unix'),
       updated_at: jagql.Joi.date().timestamp('unix'),
       updated_by: jagql.Joi.number()
     },
     attributes: {
-      name: jagql.Joi.string(),
+      //role_id: jagql.Joi.number(),
+      table_name: jagql.Joi.string(),
       created_at: jagql.Joi.date().timestamp('unix').default(Math.round(Date.now() / 1000)),
       updated_at: jagql.Joi.date().timestamp('unix').default(Math.round(Date.now() / 1000)),
       updated_by: jagql.Joi.number().default(1),
-      clients: jagql.Joi.belongsToMany('clients')
+      role: jagql.Joi.one('roles')
       
     }
   });

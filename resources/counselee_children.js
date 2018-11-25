@@ -3,21 +3,30 @@ module.exports = function (jagql, handlerConfig) {
   let Handler = require('@jagql/store-sequelize');
   let mainHandler = new Handler(handlerConfig);
   jagql.define({
-    resource: 'ethnicities',
+    resource: 'counselee_children',
     handlers: mainHandler,
     primaryKey: 'autoincrement',
     searchParams: {
-      name: jagql.Joi.string(),
+      //school_id: jagql.Joi.number(),
+      school_problems: jagql.Joi.string(),
+      long_standing_illnesses: jagql.Joi.string(),
+      who_else_raised_child: jagql.Joi.string(),
       created_at: jagql.Joi.date().timestamp('unix'),
       updated_at: jagql.Joi.date().timestamp('unix'),
       updated_by: jagql.Joi.number()
     },
     attributes: {
-      name: jagql.Joi.string(),
+      //school_id: jagql.Joi.number(),
+      school_problems: jagql.Joi.string().allow(null),
+      long_standing_illnesses: jagql.Joi.string().allow(null),
+      who_else_raised_child: jagql.Joi.string().allow(null),
       created_at: jagql.Joi.date().timestamp('unix').default(Math.round(Date.now() / 1000)),
       updated_at: jagql.Joi.date().timestamp('unix').default(Math.round(Date.now() / 1000)),
       updated_by: jagql.Joi.number().default(1),
-      clients: jagql.Joi.belongsToMany('clients')
+      school: jagql.Joi.one('schools'),
+      siblings: jagql.Joi.many('counselee_child_siblings'),
+      guardians: jagql.Joi.many('counselee_child_guardians'),
+      bio_parents: jagql.Joi.many('counselee_child_bio_parents')
       
     }
   });
