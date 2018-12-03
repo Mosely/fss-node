@@ -5,7 +5,7 @@ module.exports = function (jagql, handlerConfig) {
   jagql.define({
     resource: 'bio_parents',
     handlers: mainHandler,
-    primaryKey: 'autoincrement',
+    primaryKey: 'uuid',
     searchParams: {
       relation: jagql.Joi.string().valid(['MOTHER', 'FATHER']),
       name: jagql.Joi.string(),

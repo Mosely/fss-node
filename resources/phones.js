@@ -5,7 +5,7 @@ module.exports = function (jagql, handlerConfig) {
   jagql.define({
     resource: 'phones',
     handlers: mainHandler,
-    primaryKey: 'autoincrement',
+    primaryKey: 'uuid',
     searchParams: {
       area_code: jagql.Joi.number(),
       phone_number: jagql.Joi.number(),

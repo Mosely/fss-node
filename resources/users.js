@@ -5,7 +5,7 @@ module.exports = function (jagql, handlerConfig) {
   jagql.define({
     resource: 'users',
     handlers: mainHandler,
-    primaryKey: 'autoincrement',
+    primaryKey: 'uuid',
     searchParams: {
       username: jagql.Joi.string(),
       email: jagql.Joi.string(),

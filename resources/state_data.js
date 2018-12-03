@@ -5,7 +5,7 @@ module.exports = function (jagql, handlerConfig) {
   jagql.define({
     resource: 'state_data',
     handlers: mainHandler,
-    primaryKey: 'autoincrement',
+    primaryKey: 'uuid',
     searchParams: {
       name: jagql.Joi.string(),
       state_code: jagql.Joi.string(),

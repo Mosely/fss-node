@@ -5,7 +5,7 @@ module.exports = function (jagql, handlerConfig) {
   jagql.define({
     resource: 'drug_uses',
     handlers: mainHandler,
-    primaryKey: 'autoincrement',
+    primaryKey: 'uuid',
     searchParams: {
       dtype: jagql.Joi.string(),
       created_at: jagql.Joi.date().timestamp('unix'),
